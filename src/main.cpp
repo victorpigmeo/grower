@@ -24,8 +24,8 @@ void setup() {
 
   // Connect WiFi
   Serial.print("Connecting to ");
-  Serial.print(AuthInfo::ssid);
-  WiFi.begin(AuthInfo::ssid, AuthInfo::password);
+  Serial.print(AuthInfo::wifi_ssid);
+  WiFi.begin(AuthInfo::wifi_ssid, AuthInfo::wifi_password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");

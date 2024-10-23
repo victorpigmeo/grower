@@ -1,16 +1,14 @@
-## Need to create a auth_info.h file like this inside `src` folder
+## Need to create an `auth_info.cpp` file like this inside `src` folder
 
 ``` c++
-#ifndef AUTH_INFO_H_
-#define AUTH_INFO_H_
+#include "auth_info.h"
 
 namespace AuthInfo {
-const char *wifi_ssid = "wifi-ssid";
-const char *wifi_password = "wifi-password";
-const char *management_password = "management-screen-password";
-} // namespace AuthInfo
+const char *wifi_ssid = "wifi_ssid";
+const char *wifi_password = "wifi_password";
+const char *management_password = "management_screen_password";
 
-#endif // AUTH_INFO_H_
+} // namespace AuthInfo
 
 ```
 
