@@ -8,6 +8,7 @@ namespace Response {
 void ok(WiFiClient client, String responseBody);
 void not_found(WiFiClient client);
 void unauthorized(WiFiClient client);
+void server_error(WiFiClient client);
 } // namespace Response
 
 #endif // RESPONSE_H_

@@ -2,15 +2,9 @@
 
 #include "http_server.h"
 
-#include "controllers/auth_http_controller.h"
-#include "controllers/gpio_http_controller.h"
-#include "controllers/html_controller.h"
-#include "controllers/settings_controller.h"
-#include "controllers/stream_http_controller.h"
-
 namespace HttpServer {
 
-void handleRequest(WiFiClient client, httpd_handle_t stream_httpd) {
+void handleRequest(WiFiClient client, httpd_handle_t stream_httpd, DHT dht) {
   String current_line = "";
   String request;
 
@@ -76,6 +70,8 @@ void handleRequest(WiFiClient client, httpd_handle_t stream_httpd) {
               AuthHttpController::handle(client, url_slices);
             } else if (controller == "settings") {
               SettingsController::handle(client, url_slices);
+            } else if (controller == "dht") {
+              DHTController::handle(client, url_slices, dht);
             } else {
               Response::not_found(client);
             }

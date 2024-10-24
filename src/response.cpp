@@ -27,4 +27,12 @@ void unauthorized(WiFiClient client) {
   client.println("Connection: close");
   client.println();
 }
+
+void server_error(WiFiClient client) {
+  client.println("HTTP/1.1 500 Server Error");
+  client.println("Content-type:application/json");
+  client.println("Access-Control-Allow-Origin: *");
+  client.println("Connection: close");
+  client.println();
+}
 } // namespace Response

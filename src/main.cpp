@@ -1,4 +1,5 @@
 #include "SPIFFS.h"
+#include <DHT.h>
 #include <WiFi.h>
 
 #include "auth_info.h"
@@ -7,6 +8,7 @@
 
 // Aux pins
 #define FLASH_PIN 4
+#define DHT_PIN 16
 
 // Camera server instance
 httpd_handle_t stream_httpd = NULL;
@@ -14,13 +16,18 @@ httpd_handle_t stream_httpd = NULL;
 // HttpServer instance
 WiFiServer server(8080);
 
+// DHT Instance
+DHT dht(DHT_PIN, DHT11);
+
 void setup() {
   WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); // deactivate brownout
 
   Serial.begin(115200);
   Serial.setDebugOutput(false);
+
+  dht.begin();
+
   pinMode(12, OUTPUT);
-  pinMode(4, OUTPUT);
 
   // Connect WiFi
   Serial.print("Connecting to ");
@@ -51,7 +58,7 @@ void loop() {
 
   if (client) {
 
-    HttpServer::handleRequest(client, stream_httpd);
+    HttpServer::handleRequest(client, stream_httpd, dht);
 
     client.stop();
   }
