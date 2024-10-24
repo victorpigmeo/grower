@@ -1,5 +1,5 @@
 # Deprecated
-Although this works well, the ESP32-CAM chip is a bit weak and somehow volatile (even more for those who don't understand C++ well)
+Although this works well for temperature and peripheral control, the ESP32-CAM chip is a bit weak and somehow volatile (even more for those who don't understand C++ well)
 So I'll be migrating this to a RPi + Webcam :smiley:
 
 ## Need to create an `auth_info.cpp` file like this inside `src` folder
